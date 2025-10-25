@@ -1,0 +1,69 @@
+mport java.util.Scanner;
+
+public class HitungPendapatanSalesman {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double pendapatanPenjualan;
+        double uangJasa;
+        double uangKomisi;
+        double totalPendapatan;
+
+        System.out.println("=== Program Penghitung Pendapatan Salesman ===");
+        System.out.print("Masukkan jumlah penjualan (dalam Rupiah, cth: 3500000): Rp ");
+        
+        try {
+            pendapatanPenjualan = input.nextDouble();
+            if (pendapatanPenjualan < 0) {
+                System.out.println("Jumlah penjualan tidak boleh negatif.");
+                return; // Keluar dari program
+            }
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Input tidak valid. Harap masukkan angka.");
+            return; // Keluar dari program
+        }
+
+
+        if (pendapatanPenjualan <= 2000000) {
+            uangJasa = 100000;
+            uangKomisi = 0.10 * pendapatanPenjualan; // Komisi 10% dari pendapatan hari itu
+            totalPendapatan = uangJasa + uangKomisi;
+
+            System.out.println("\n--- Detail Pendapatan (Kriteria A) ---");
+            System.out.println("Penjualan hari ini: Rp " + formatRupiah(pendapatanPenjualan));
+            System.out.println("Uang Jasa (tetap): Rp " + formatRupiah(uangJasa));
+            System.out.println("Uang Komisi (10%): Rp " + formatRupiah(uangKomisi));
+            System.out.println("=========================================");
+            System.out.println("*Total Pendapatan:* Rp " + formatRupiah(totalPendapatan));
+
+        } else if (pendapatanPenjualan > 2000000 && pendapatanPenjualan <= 7000000) {
+            uangJasa = 200000;
+            uangKomisi = 0.15 * pendapatanPenjualan; // Komisi 15% dari pendapatan hari itu
+            totalPendapatan = uangJasa + uangKomisi;
+
+            System.out.println("\n--- Detail Pendapatan (Kriteria B) ---");
+            System.out.println("Penjualan hari ini: Rp " + formatRupiah(pendapatanPenjualan));
+            System.out.println("Uang Jasa (tetap): Rp " + formatRupiah(uangJasa));
+            System.out.println("Uang Komisi (15%): Rp " + formatRupiah(uangKomisi));
+            System.out.println("=========================================");
+            System.out.println("*Total Pendapatan:* Rp " + formatRupiah(totalPendapatan));
+
+        } else {
+            uangJasa = 300000;
+            uangKomisi = 0.20 * pendapatanPenjualan; // Komisi 20% dari pendapatan hari itu
+            totalPendapatan = uangJasa + uangKomisi;
+
+            System.out.println("\n--- Detail Pendapatan (Kriteria C) ---");
+            System.out.println("Penjualan hari ini: Rp " + formatRupiah(pendapatanPenjualan));
+            System.out.println("Uang Jasa (tetap): Rp " + formatRupiah(uangJasa));
+            System.out.println("Uang Komisi (20%): Rp " + formatRupiah(uangKomisi));
+            System.out.println("=========================================");
+            System.out.println("*Total Pendapatan:* Rp " + formatRupiah(totalPendapatan));
+        }
+
+        input.close();
+    }
+    public static String formatRupiah(double angka) {
+        return String.format("%,.0f", angka).replace(',', '').replace('.', ',').replace('', '.');
+    }
+}
