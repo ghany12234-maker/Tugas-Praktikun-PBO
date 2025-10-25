@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class HitungLuasBangunDatar {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int pilihan;
+        double luas;
+
+        System.out.println("--- Program Hitung Luas Bangun Datar ---");
+        System.out.println("Pilih bangun datar yang ingin dihitung luasnya:");
+        System.out.println("1. Luas Persegi");
+        System.out.println("2. Luas Segitiga");
+        System.out.println("3. Luas Lingkaran");
+        System.out.println("4. Luas Trapesium");
+        System.out.println("5. Luas Layang-layang");
+        System.out.print("Masukkan pilihan (1-5): ");
+        pilihan = input.nextInt();
+        
+        System.out.println("----------------------------------------");
+
+        switch (pilihan) {
+            case 1:
+                System.out.print("Masukkan panjang sisi: ");
+                double sisi = input.nextDouble();
+                luas = sisi * sisi;
+                System.out.printf("Luas Persegi = %.2f%n", luas);
+                break;
+
+            case 2:
+                System.out.print("Masukkan alas: ");
+                double alas = input.nextDouble();
+                System.out.print("Masukkan tinggi: ");
+                double tinggi = input.nextDouble();
+                luas = 0.5 * alas * tinggi;
+                System.out.printf("Luas Segitiga = %.2f%n", luas);
+                break;
+
+            case 3:
+                System.out.print("Masukkan jari-jari: ");
+                double r = input.nextDouble();
+                final double PI = 3.14159;
+                luas = PI * r * r;
+                System.out.printf("Luas Lingkaran = %.2f%n", luas);
+                break;
+
+            case 4:
+                System.out.print("Masukkan panjang sisi sejajar a: ");
+                double a = input.nextDouble();
+                System.out.print("Masukkan panjang sisi sejajar b: ");
+                double b = input.nextDouble();
+                System.out.print("Masukkan tinggi: ");
+                double tTra = input.nextDouble();
+                luas = 0.5 * (a + b) * tTra;
+                System.out.printf("Luas Trapesium = %.2f%n", luas);
+                break;
+
+            case 5:
+                System.out.print("Masukkan panjang diagonal 1 (d1): ");
+                double d1 = input.nextDouble();
+                System.out.print("Masukkan panjang diagonal 2 (d2): ");
+                double d2 = input.nextDouble();
+                luas = 0.5 * d1 * d2;
+                System.out.printf("Luas Layang-layang = %.2f%n", luas);
+                break;
+
+            default:
+                System.out.println("Pilihan tidak valid! Silakan masukkan angka 1 sampai 5.");
+                break;
+        }
+        
+        System.out.println("----------------------------------------");
+        input.close();
+    }
+}
