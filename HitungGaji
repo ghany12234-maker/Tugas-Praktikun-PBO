@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class HitungGaji {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Masukkan NIK: ");
+        String nik = input.nextLine();
+        System.out.print("Masukkan Nama: ");
+        String nama = input.nextLine();
+        System.out.print("Masukkan Kode Golongan (1-4): ");
+        int kodeGolongan = input.nextInt();
+        System.out.print("Masukkan Status Pernikahan (1=Menikah, 0=Belum): ");
+        int statusNikah = input.nextInt();
+        int jumlahAnak = 0;
+
+        if (statusNikah == 1) {
+            System.out.print("Masukkan Jumlah Anak: ");
+            jumlahAnak = input.nextInt();
+        }
+
+        double gajiPokok = 0;
+
+        switch (kodeGolongan) {
+            case 1:
+                gajiPokok = 1200000;
+                break;
+            case 2:
+                gajiPokok = 1500000;
+                break;
+            case 3:
+                gajiPokok = 1750000;
+                break;
+            case 4:
+                gajiPokok = 2000000;
+                break;
+            default:
+                System.out.println("Kode golongan tidak valid.");
+                return;
+
+        }
+        double tunjanganPasangan = 0;
+        double tunjanganAnak = 0;
+
+        if (statusNikah == 1 || kodeGolongan == 4) { // Asumsi: statusNikah 1 mencakup kode 1 & 4, tapi kita gunakan kodeGolongan untuk Gaji Pokok
+             tunjanganPasangan = 0.10 * gajiPokok;
+        }
+
+        if (jumlahAnak > 0) {
+            tunjanganAnak = (0.05 * gajiPokok) * jumlahAnak;
+        }
+
+        double gajiBersih = gajiPokok + tunjanganPasangan + tunjanganAnak;
+
+        System.out.println("\n--- Rincian Gaji Karyawan ---");
+        System.out.println("NIK: " + nik);
+        System.out.println("Nama: " + nama);
+        System.out.println("Gaji Pokok: Rp" + gajiPokok);
+        System.out.println("Tunjangan Pasangan: Rp" + tunjanganPasangan);
+        System.out.println("Tunjangan Anak: Rp" + tunjanganAnak);
+        System.out.println("Gaji Bersih: Rp" + gajiBersih);
+    }
+}
