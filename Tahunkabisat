@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class TahunKabisat {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Masukkan tahun (contoh: 2024): ");
+        int tahun = input.nextInt();
+        String hasil;
+ 
+        if ((tahun % 4 == 0 && tahun % 100 != 0) || (tahun % 400 == 0)) {
+            hasil = "adalah TAHUN KABISAT. \uD83D\uDCC5"; // \uD83D\uDCC5 adalah emoji kalender
+        } else {
+            hasil = "BUKAN tahun kabisat. \u274C"; // \u274C adalah emoji silang
+        }
+
+        System.out.println(tahun + " " + hasil);
+    }
+}
